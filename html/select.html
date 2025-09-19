@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <h1>Tanlangan mahsulotlar</h1>
+  <div id="list"></div>
+
+  <script>
+    const list = document.getElementById('list');
+    const selected = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+
+    if (selected.length === 0) {
+      list.textContent = "Hozircha hech narsa tanlanmagan.";
+    } else {
+      selected.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'selected-item';
+        div.textContent = `${item.name} - $${item.price}`;
+        list.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>

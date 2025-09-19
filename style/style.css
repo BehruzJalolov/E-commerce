@@ -1,0 +1,507 @@
+:root {
+  --amazon-orange: #febd69;
+  --amazon-dark: #111;
+  --light-gray: #f3f3f3;
+  --border: #ddd;
+  --max-width: 1200px;
+  --search-border: #f3a847;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Navbar umumiy */
+.navbar {
+  width: 100%;
+  background: black;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+}
+
+#nav-belt {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: var(--max-width);
+  gap: 16px; /* elementlar orasidagi masofa */
+}
+
+/* Chap taraf (logo + location) */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Location block */
+#nav-global-location-slot {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#nav-global-location-slot:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 🔥 Matn rangini oq qilish */
+#glow-ingress-line1,
+#glow-ingress-line2 {
+  color: #fff !important;
+}
+
+
+
+#glow-ingress-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+#glow-ingress-line1 {
+  font-size: 12px;
+  color: #555;
+}
+
+#glow-ingress-line2 {
+  font-size: 14px;
+  font-weight: bold;
+  color: #111;
+}
+
+/* Qidiruv paneli */
+.search-bar {
+  display: flex;
+  flex: 1;            /* <--- MUHIM: kengayishi uchun */
+  max-width: 700px; 
+  width: 100%;  /* ixtiyoriy: eng katta o‘lcham */
+  margin: 0 20px;
+}
+
+
+.search-category {
+  background-color: var(--light-gray);
+  border: none;
+  padding: 0 8px;
+  outline: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-button {
+  background-color: var(--amazon-orange);
+  border: none;
+  padding: 0 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.navbar {
+  background: #131921;
+  color: white;
+  padding: 8px 20px;
+}
+
+#nav-belt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-right > div {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-right .nav-line-2 {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.nav-lang {
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.lang-flag {
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+}
+
+.nav-cart {
+  position: relative;
+  flex-direction: row;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  left: 12px;
+  background: orange;
+  color: black;
+  font-size: 11px;
+  padding: 1px 4px;
+  border-radius: 50%;
+}
+.site-logo-images {
+    width: 30px;
+    height: 30px;
+}
+.nav-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #232f3e;
+  padding: 0 20px;
+  height: 40px;
+}
+
+.nav-bottom-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-bottom-left a,
+.nav-bottom-right a,
+.all-btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.all-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.nav-bottom-left a:hover,
+.nav-bottom-right a:hover,
+.all-btn:hover {
+  background-color: #37475a; /* biroz ochroq kul-ko‘k */
+  transform: translateY(-2px); /* biroz ko‘tariladi */
+}
+.hero-banner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.banner-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.shop-now {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #ff9900;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.shop-now:hover {
+  background: #e68a00;
+}
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  background: #f3f3f3;
+}
+
+.category-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.category-card h3 {
+  margin: 15px 0 10px;
+  font-size: 1.2rem;
+}
+
+.category-card a {
+  text-decoration: none;
+  color: #007185;
+  font-weight: bold;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  padding: 40px 20px;
+  background: #fff;
+}
+
+.product-card {
+  background: #f8f8f8;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-card h4 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+}
+
+.product-card .price {
+  color: #B12704;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-card .rating {
+  color: #FFA41C;
+  margin-bottom: 10px;
+}
+
+.product-card button {
+  background: #FFD814;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background: #F7CA00;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.footer {
+  background: #232F3E;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.back-to-top {
+  text-align: center;
+  background: #37475A;
+  padding: 15px 0;
+}
+
+.back-to-top a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.footer-column h4 {
+  color: #fff;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.footer-column a {
+  display: block;
+  color: #ddd;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+
+.footer-bottom {
+  border-top: 1px solid #3a4553;
+  text-align: center;
+  padding: 20px;
+}
+
+.footer-logo {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+/* Qidiruv natijalari umumiy konteyneri */
+#searchResults {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  background: #f4f4f4;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Har bir natija kartasi */
+#searchResults .card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+#searchResults .card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid #eee;
+}
+
+#searchResults .card h3 {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+
+#searchResults .card p {
+  font-size: 14px;
+  color: #555;
+  margin: 0 10px 10px;
+}
+
+#searchResults .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Natijalar bo‘limi sarlavhasi (agar ishlatilsa) */
+#searchResultsTitle {
+  text-align: center;
+  font-size: 22px;
+  margin: 30px 0 10px;
+}
+.addToCartBtn {
+  background: #ff9900;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  margin-top: 10px;
+}
+
+.addToCartBtn:hover {
+  background: #e68a00;
+}
+
+.viewCartBtn {
+  display: inline-block;
+  margin-top: 30px;
+  text-decoration: none;
+  background: #232f3e;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.viewCartBtn:hover {
+  background: #131921;
+}
+
+
