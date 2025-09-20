@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail</title>
+  <link rel="stylesheet" href="/style/gaming.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 20px; }
+    .detail-container { max-width: 1100px; margin: auto; background: #fff; border-radius: 10px; padding: 20px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
+    .detail-container img { width: 100%; border-radius: 10px; object-fit: cover; }
+    .product-info h1 { margin: 0 0 15px; }
+    .price { font-size: 22px; color: #B12704; font-weight: bold; margin: 15px 0; }
+    .buy-btn { background: #FFD814; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: bold; }
+    .buy-btn:hover { background: #F7CA00; }
+    .related { max-width: 1100px; margin: 40px auto; }
+    .related h2 { margin-bottom: 20px; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap: 20px; }
+    .related-card { background: #fff; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.3s; }
+    .related-card:hover { transform: scale(1.05); }
+    .related-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 8px; }
+    .related-card h4 { margin: 10px 0; font-size: 16px; }
+    .related-card .price { color: #B12704; font-weight: bold; }
+    .related-card a { display: inline-block; margin-top: 8px; text-decoration: none; background: #2196F3; color: #fff; padding: 8px 12px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+      <div class="back-home-container">
+  <a href="./gaming.html" type="button" class="btn btn-outline-primary">Back Home</a>
+</div>
+
+
+  <!-- Tanlangan mahsulot -->
+  <div id="product-container"></div>
+
+  <!-- Related products -->
+  <div class="related">
+    <h2>Other Products </h2>
+    
+    <div id="related-container" class="related-grid"></div>
+  </div>
+  
+
+  <script>
+    // URL'dan product ID olish
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    // Mahsulotlar ro'yxati
+    // Mahsulotlar ro'yxati
+const products = [
+  {
+    id: "1",
+    name: "Gaming Laptop ASUS",
+    img: "/image/gaming laptop.png",
+    description: `Ноутбук HP 255 G9 PREMIUM, Ryzen5 5625U, AMD Radeon, 8GB DDR4, 256GB SSD, 15.6" FULL HD IPS`,
+    price: "$1.789.023",
+    details: "HIGH-LEVEL PERFORMANCE – Unleash power with Windows 11 Home, an Intel Core i7 Processor 14650HX, and an NVIDIA GeForce RTX 5060 Laptop GPU powered by the NVIDIA Blackwell architecture and featuring DLSS 4 and Max-Q technologies."
+  },
+  {
+    id: "2",
+    name: "Gaming laptop MSI",
+    img: "/image/gaming laptopMSI.png",
+    description: "MSI Katana 15 HX 15.6” 165Hz QHD+ Gaming Laptop...",
+    price: "$1.620.066",
+    details: "Unleash Gaming Dominance: Elevate your gaming with the Intel Core i9 processor (14th gen HX-series). Packed with a high core count and lightning-fast speeds, this gaming engine delivers the speed and responsiveness you've been longing for."
+  },
+  {
+    id: "3",
+    name: "Gaming laptop HP Victus",
+    img: "/image/gaming laptop HP Victus.png",
+    description: "HP Victus 15.6 i5 Gaming Laptop, Intel Core i5-12450H...",
+    price: "$650",
+    details: "High Speed RAM And Enormous Space] 32GB high-bandwidth RAM to smoothly run multiple applications and browser tabs all at once; 1TB PCIe NVMe M.2 Solid State Drive allows to fast bootup and data transfer"
+  },
+  {
+    id: "4",
+    name: "Skytech Gaming King 95",
+    img: "/image/gaming pc1.png",
+    description: "Skytech Gaming King 95 Desktop PC, Ryzen 7 9800X3D...",
+    price: "$2,899.99",
+    details: "AMD Ryzen 7 9800X3D 4.7GHz (5.2GHz Turbo Boost) CPU Processor | 2TB Gen4 NVMe M.2 SSD – Up to 30x Faster Than Traditional HDD | 360mm AIO Liquid CPU Cooler with ARGB Fans, say goodbye to outdated and inefficient air coolers."
+  },
+  {
+    id: "5",
+    name: "Gaming ASUS TUF Gaming GeForce RTX 5070",
+    img: "/image/tuf gaming gfore.png",
+    description: "ASUS TUF Gaming GeForce RTX 5070 12GB GDDR7 OC Edition...",
+    price: "$833.32",
+    details: "Powered by the NVIDIA Blackwell architecture and DLSS 4"
+  },
+  {
+    id: "6",
+    name: "Gaming laptop ASUS TUF Gaming F16",
+    img: "/image/asus tuf gaming f16.png",
+    description: "ASUS TUF Gaming F16 Gaming Laptop, 16” FHD+ 144Hz...",
+    price: "$929.99",
+    details: "READY FOR ANYTHING – Dive headfirst into gaming on Windows 11 powered by the Intel Core 5 210H processor and an NVIDIA GeForce RTX 4050 laptop GPU with a Max TGP of 115W and NVIDIA Advanced Optimus."
+  },
+  {
+    id: "7",
+    name: "Gaming laptop MSI Thin 15",
+    img: "/image/MSI Thin 15.png",
+    description: "MSI Thin 15 15.6” 144Hz FHD Gaming Laptop...",
+    price: "$859.88",
+    details: "Supercharged Process: The 13th Gen. Intel Core i7 processor delivers the ultimate immersive experience in gameplay, multi-task work and productivity."
+  },
+  {
+    id: "8",
+    name: "Gaming laptop ASUS ROG Strix G16",
+    img: "/image/ASUS ROG Strix G16.png",
+    description: "ASUS ROG Strix G16 (2025) Gaming Laptop, 16” FHD+...",
+    price: "$1,299.00",
+    details: "HIGH-LEVEL PERFORMANCE – Unleash power with Windows 11 Home, an Intel Core i7 Processor 14650HX, and an NVIDIA GeForce RTX 5050 Laptop GPU powered by the NVIDIA Blackwell architecture and featuring DLSS 4 and Max-Q technologies."
+  },
+  {
+    id: "9",
+    name: "Gaming laptop ASUS TUF Gaming A15",
+    img: "/image/ASUS TUF Gaming A15.png",
+    description: "ASUS TUF Gaming A15 Gaming Laptop, Ryzen 5 7535HS...",
+    price: "$728.63",
+    details: "READY FOR ANYTHING - Jump right into the action with Windows 11, an AMD Ryzen 5 7535HS processor, and NVIDIA GeForce RTX 3050 Laptop GPU (up to 70W TGP with Dynamic Boost)."
+  },
+  {
+    id: "10",
+    name: "Gaming mouse Razer Tartarus V2",
+    img: "/image/Razer Tartarus V2.png",
+    description: "Razer Tartarus V2 Gaming Keypad: Mecha Membrane Key Switches...",
+    price: "$55.45",
+    details: "HIGH-PERFORMANCE MECHA-MEMBRANE SWITCHES — Provides the tactile feedback of mechanical key press on a comfortable, soft-cushioned, membrane, rubber dome switch suitable for gaming"
+  }
+];
+
+
+    const product = products.find(p => p.id === id);
+
+    if(product){
+      document.getElementById("product-container").innerHTML = `
+        <div class="detail-container">
+          <div><img src="${product.img}" alt="${product.name}"></div>
+          <div class="product-info">
+            <h1>${product.name}</h1>
+            <p>${product.description}</p>
+            <div class="price">${product.price}</div>
+            <button class="buy-btn">Buy Now</button>
+            <h3 style="margin-top:20px;">Details</h3>
+            <p>${product.details}</p>
+          </div>
+        </div>
+      `;
+
+      // Related productlar (tanlangani tashqari)
+      const relatedHTML = products
+        .filter(p => p.id !== id)
+        .map(p => `
+          <div class="related-card">
+            <img src="${p.img}" alt="${p.name}">
+            <h4>${p.name}</h4>
+            <div class="price">${p.price}</div>
+            <a href="product-detail.html?id=${p.id}">View Details</a>
+          </div>
+        `).join("");
+      document.getElementById("related-container").innerHTML = relatedHTML;
+    } else {
+      document.getElementById("product-container").innerHTML = "<p>Product not found</p>";
+    }
+  </script>
+
+</body>
+</html>
