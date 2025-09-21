@@ -1,0 +1,117 @@
+/* Fashion Page Responsive & Pro Style */
+
+/* umumiy container */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 30px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+/* card dizayni */
+.fashion-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* hover effekti */
+.fashion-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* rasm */
+.fashion-card img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+/* hoverda rasm zoom */
+.fashion-card:hover img {
+  transform: scale(1.05);
+}
+
+/* title */
+.fashion-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* description */
+.fashion-card p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  height: 65px; /* matn balandligini cheklash */
+  overflow: hidden;
+}
+
+/* price tugma */
+.select-btn {
+  background: #ffa500;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.select-btn:hover {
+  background: #ff7b00;
+  transform: scale(1.05);
+}
+
+/* kategoriya title */
+.category-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 40px 0 20px 0;
+  text-align: left;
+  color: #333;
+  border-left: 5px solid #007bff;
+  padding-left: 10px;
+}
+
+/* Responsive moslashuv */
+@media (max-width: 768px) {
+  .fashion-card img {
+    height: 180px;
+  }
+  .fashion-card h3 {
+    font-size: 16px;
+  }
+  .select-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-container {
+    grid-template-columns: 1fr; /* faqat 1 ustun telefon uchun */
+  }
+  .fashion-card img {
+    height: 160px;
+  }
+}
