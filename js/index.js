@@ -57,6 +57,49 @@ document.getElementById('searchBtn').addEventListener('click', () => {
   const q = document.getElementById('searchInput').value;
   window.location.href = `/html/category-products.html?search=${q}`;
 });
+// Mahsulotlarni massivda saqlab qo'yamiz
+const products = [
+  { id: 1, name: "Wireless Headphones", price: 59.99, image: "../image/headphone.png" },
+  { id: 2, name: "Smart Watch", price: 89.99, image: "../image/smart watch.png" },
+  { id: 3, name: "Bluetooth Speaker", price: 39.99, image: "../image/bluetooth speaker.png" },
+  { id: 4, name: "Gaming Mouse", price: 25.99, image: "../image/gaming mause.png" },
+];
+
+// Savatni localStorage'dan olish yoki bo'sh massiv yaratish
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+// Tugmalarga listener qo'shamiz
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.addEventListener("click", () => {
+    const id = parseInt(button.dataset.id);
+    const product = products.find(p => p.id === id);
+
+    // Agar mahsulot allaqachon savatda bo'lsa miqdorini oshiramiz
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+
+    // Savatni localStorage ga saqlaymiz
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Cart counter ni yangilaymiz
+    updateCartCount();
+    alert(`${product.name} savatga qo'shildi!`);
+  });
+});
+
+// Cart counter ni yangilash funksiyasi
+function updateCartCount() {
+  const cartCount = document.querySelector(".cart-count");
+  cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+// Sahifa yuklanganda counterni yangilab qo'yamiz
+updateCartCount();
+
 
 
 

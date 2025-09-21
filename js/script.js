@@ -8,11 +8,7 @@ titleEl.textContent = category ? category : 'Category';
 
 // Har bir kategoriya uchun namunaviy mahsulotlar
 const productsByCategory = {
-  electronics: [
-    {name: 'Smartphone', img: '../image/smartphone.png'},
-    {name: 'tv', img: '../image/tv.png'},
-    {name: 'Headphones', img: '../image/Headphones.png'}
-  ],
+  
   fashion: [
     {name: 'T-shirt', img: '../image/T-shirt.png'},
     {name: 'Jeans', img: '../image/Jeans.png'},
