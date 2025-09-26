@@ -1,26 +1,71 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background: #f5f5f5;
+/* 2025 Modern Cart Design */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --glass-bg: rgba(255, 255, 255, 0.25);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --neon-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+  --text-dark: #2d3748;
+  --text-light: #4a5568;
 }
 
-/* Savatdagi mahsulot */
+body {
+  font-family: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  backdrop-filter: blur(10px);
+}
+
+/* Glassmorphism cart item */
 .cart-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  padding: 15px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 1px solid var(--glass-border);
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: var(--neon-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cart-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.6s;
+}
+
+.cart-item:hover::before {
+  left: 100%;
+}
+
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
 }
 
 .cart-item img {
-  width: 100px;
-  height: auto;
-  margin-right: 20px;
-  border-radius: 6px;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-right: 25px;
+  border-radius: 15px;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.cart-item:hover img {
+  transform: scale(1.05);
 }
 
 .cart-info {
@@ -28,82 +73,268 @@ body {
 }
 
 .cart-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 18px;
-  color: #333;
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 700;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .cart-info .price {
-  font-weight: bold;
-  color: #555;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--text-dark);
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
 }
 
 .quantity {
-  margin-top: 8px;
+  margin-top: 15px;
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .quantity button {
-  padding: 6px 12px;
-  margin: 0 5px;
-  font-weight: bold;
+  padding: 12px 20px;
+  font-weight: 700;
   cursor: pointer;
   border: none;
-  background: #007bff;
+  background: var(--primary-gradient);
   color: #fff;
-  border-radius: 4px;
-  transition: 0.2s;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  min-width: 50px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.quantity button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  transform: translate(-50%, -50%);
+}
+
+.quantity button:active::after {
+  width: 100px;
+  height: 100px;
 }
 
 .quantity button:hover {
-  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
-/* --- Responsiv dizayn --- */
+.quantity span {
+  font-size: 20px;
+  font-weight: 700;
+  min-width: 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.2);
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
 
-/* Planshet (768px gacha) */
-@media (max-width: 768px) {
+/* --- 2025 Modern Responsive Design --- */
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+  body {
+    padding: 50px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
   .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px;
+    padding: 30px;
+    margin-bottom: 25px;
   }
-
+  
   .cart-item img {
-    width: 80px;
-    margin: 0 0 10px 0;
+    width: 160px;
+    height: 160px;
   }
+}
 
+/* Planshet (769px - 1024px) */
+@media (max-width: 1024px) {
+  body {
+    padding: 25px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .cart-item {
+    padding: 20px;
+    border-radius: 18px;
+  }
+  
+  .cart-item img {
+    width: 120px;
+    height: 120px;
+    margin-right: 20px;
+  }
+  
   .cart-info h3 {
+    font-size: 20px;
+  }
+  
+  .quantity button {
+    padding: 10px 18px;
     font-size: 16px;
   }
+}
 
+/* Kichik Planshet (481px - 768px) */
+@media (max-width: 768px) {
+  body {
+    padding: 20px;
+  }
+  
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 25px 20px;
+    gap: 20px;
+  }
+  
+  .cart-item img {
+    width: 140px;
+    height: 140px;
+    margin: 0 0 15px 0;
+  }
+  
+  .cart-info {
+    width: 100%;
+  }
+  
+  .cart-info h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
   .quantity {
-    margin-top: 5px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .quantity button {
+    padding: 12px 20px;
+    font-size: 18px;
+    min-width: 55px;
   }
 }
 
-/* Telefon (480px gacha) */
+/* Telefon (480px va kichikroq) */
 @media (max-width: 480px) {
+  body {
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .cart-item {
+    padding: 20px 15px;
+    margin-bottom: 15px;
+    border-radius: 15px;
+  }
+  
+  .cart-item img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+  }
+  
+  .cart-info h3 {
+    font-size: 20px;
+  }
+  
+  .cart-info .price {
+    font-size: 18px;
+    padding: 6px 12px;
+  }
+  
+  .quantity {
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .quantity button {
+    padding: 10px 16px;
+    font-size: 16px;
+    min-width: 45px;
+  }
+  
+  .quantity span {
+    font-size: 18px;
+    padding: 8px;
+  }
+}
+
+/* Ultra kichik ekranlar (360px va kichikroq) */
+@media (max-width: 360px) {
   body {
     padding: 10px;
   }
-
+  
   .cart-item {
-    padding: 10px;
+    padding: 15px 10px;
   }
-
+  
   .cart-item img {
-    width: 70px;
+    width: 100px;
+    height: 100px;
   }
-
+  
   .cart-info h3 {
-    font-size: 14px;
+    font-size: 18px;
   }
-
+  
   .quantity button {
-    padding: 4px 8px;
+    padding: 8px 14px;
     font-size: 14px;
   }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-dark: #f7fafc;
+    --text-light: #e2e8f0;
+  }
+  
+  .cart-item {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Animation for modern feel */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cart-item {
+  animation: fadeInUp 0.6s ease-out;
 }
