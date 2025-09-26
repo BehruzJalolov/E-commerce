@@ -195,8 +195,24 @@ body {
 /* Back Home tugmasini o‘rtaga olish */
 .back-home-container {
   display: flex;
-  justify-content: center; /* gorizontal o‘rtaga */
-  margin: 20px 0; /* tepada-pastda joy ochib beradi */
+  justify-content: center;
+  margin: 20px 0 40px;
+}
+
+.back-home-container a {
+  background: linear-gradient(90deg, #ff416c, #ff4b2b);
+  color: #fff !important;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.back-home-container a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 65, 108, 0.5);
 }
 body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 0; padding: 20px; }
     .detail-container { max-width: 1100px; margin: auto; background: #fff; border-radius: 10px; padding: 20px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
