@@ -174,7 +174,7 @@ In the tradition of books like Savannah Guthrie’s Mostly What God Does and Mar
             <h1>${product.name}</h1>
             <p>${product.description}</p>
             <div class="price">${product.price}</div>
-            <button class="buy-btn">Buy Now</button>
+            <button class="buy-btn" data-id="${product.id}">Buy Now</button>
             <h3 style="margin-top:20px;">Details</h3>
             <p>${product.details}</p>
           </div>
@@ -195,3 +195,26 @@ const relatedHTML = products
   `).join("");
 document.getElementById("related-container").innerHTML = relatedHTML;
   }
+  // Buy Now tugmasini bosganda
+document.querySelector(".buy-btn").addEventListener("click", () => {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Agar product avval savatda bo‘lsa - sonini oshiramiz
+  const existing = cart.find(item => item.id === product.id);
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    // Yangi product qo‘shamiz
+    cart.push({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      img: product.img,
+      quantity: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(`${product.name} savatga qo‘shildi!`);
+});
+
